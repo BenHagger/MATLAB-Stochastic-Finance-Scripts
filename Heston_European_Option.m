@@ -1,4 +1,4 @@
-function [S, V, Call, Put] = Heston_European_Option_DO_NOT_TOUCH(k, theta, v0, p, sigma, T, s0, dt, r, M, E)
+function [S, V, Call, Put] = Heston_European_Option(k, theta, v0, p, sigma, T, s0, dt, r, M, E)
 % k mean reversion speed of v_t
 % theta: long run variance of v_t
 % v0: initial variance of v_t
@@ -15,7 +15,9 @@ t = 0:dt:T; % time axis
 N = length(t); % length of each simulated pathway
 %tic
 % function uses Milstein discretization on the CIR model to compute values
-% of v_t with the truncation scheme v_t = max{v_t,0} to avoid complex prices
+% of v_t with Roger Lord, Remmert Koekkoek, and Dick JC Van Dijk. A comparison of
+biased simulation schemes for stochastic volatility models. (2008)'s full
+truncation scheme avoid complex prices
 % It deploys the Milstein scheme for s_t at each timestep
 
 %if 2 * k * theta > sigma^2 % if feller condition satisfied then carry out
