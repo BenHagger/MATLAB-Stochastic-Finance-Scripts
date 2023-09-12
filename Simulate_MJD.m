@@ -1,4 +1,4 @@
-function [t, S] = Simularte_MJD(lambda, r, sigmaBS, muJD, sigmaJD, S_0, dt, t_0, t_end, nsim)
+function [t, S] = Simulate_MJD(lambda, r, sigmaBS, muJD, sigmaJD, S_0, dt, t_0, t_end, nsim)
 % sigmaJD is the variance of the jump magnitude
 % muJD is the mean jump size
 % lambda is the intensity i.e. the mean number of jumps per unit time
