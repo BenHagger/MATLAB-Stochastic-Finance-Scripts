@@ -15,9 +15,9 @@ t = 0:dt:T; % time axis
 N = length(t); % length of each simulated pathway
 tic
 % function uses Milstein discretization on the CIR model to compute values
-% of v_t with Roger Lord, Remmert Koekkoek, and Dick JC Van Dijk. A comparison of
-% biased simulation schemes for stochastic volatility models. (2008)'s full
-% truncation scheme avoid complex prices
+% of v_t with the full truncation scheme of 'Roger Lord, Remmert Koekkoek, and Dick JC Van Dijk. A comparison of
+% biased simulation schemes for stochastic volatility models. (2008)'
+%to avoid complex prices
 % It deploys the Milstein scheme for s_t at each timestep
 
 if 2 * k * theta > sigma^2 
@@ -38,11 +38,10 @@ if 2 * k * theta > sigma^2
         v_p = V(:,i);
         s_p = S(:,i);
         %Milstein scheme with full truncation
-        v_next =v_p - k*(max(v_p,0)-theta)*dt + sigma.*sqrt((max(v_p,0)).*dZv_M + 0.25*sigma.^2 .*(dZv_M.^2 -dt);
+        v_next =v_p - k*(max(v_p,0)-theta)*dt + sigma.*sqrt(max(v_p,0)).*dZv_M + 0.25*sigma.^2 .*(dZv_M.^2 -dt);
         s_next = s_p + (r).*s_p.*dt + sqrt(v_p).*s_p.*dZs_M + 0.25*s_p.*v_p .*(dZs_M.^2 - dt);
-        % Take newly generated values and place into variable arrys % use
-        % reflection schemes
-        V(:,i+1) = max(v_next,0); 
+        % Take newly generated values and place into variable arrys 
+        V(:,i+1) = v_next; 
         S(:,i+1) = s_next; 
     end
     payoff_call = max( S(:, end) - E , 0);
