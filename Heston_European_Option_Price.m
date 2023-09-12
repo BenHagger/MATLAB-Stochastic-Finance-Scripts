@@ -38,8 +38,7 @@ if 2 * k * theta > sigma^2
         v_p = V(:,i);
         s_p = S(:,i);
         %Milstein scheme with full truncation
-        v_next =v_p - k*(max(v_p,0)-theta)*dt + sigma.*sqrt(v_p).*dZv_M + 0.25*sigma.^2 .*(dZv_M.^2 -dt);
-        %v_next =v_p +k*(theta - v_p)*dt +sigma.*sqrt(v_p*dt).*dZv_M + 0.25*sigma.^2 .*dt.*(dZv_M.^2 -1);
+        v_next =v_p - k*(max(v_p,0)-theta)*dt + sigma.*sqrt((max(v_p,0)).*dZv_M + 0.25*sigma.^2 .*(dZv_M.^2 -dt);
         s_next = s_p + (r).*s_p.*dt + sqrt(v_p).*s_p.*dZs_M + 0.25*s_p.*v_p .*(dZs_M.^2 - dt);
         % Take newly generated values and place into variable arrys % use
         % reflection schemes
