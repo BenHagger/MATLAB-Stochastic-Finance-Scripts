@@ -34,7 +34,7 @@ Jump_magnitude = muJD.*ones(nsim,N-1) + sigmaJD*randn(nsim,N-1);
 Jumps = Jump_magnitude.*Jump_location;
 % create a pathway of jumps by adding in time, whilst concating with an
 % initial zero to ensure S_0 = S_0 *1 remains true
-Jump_pathway = [zeros(nsim,1), cumsum(jumps, 2)];
+Jump_pathway = [zeros(nsim,1), cumsum(Jumps, 2)];
 
 % to model stock prices must create a pathway of Brownian motion
 BM_pathway = [zeros(nsim,1), cumsum(sqrt(dt).*randn(nsim,N-1), 2)];
