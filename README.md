@@ -1,6 +1,8 @@
 # MATLAB-Stochastic-Finance-Scripts
 **Barrier_out** - a function applied to any generated Monte Carlo prices, which filter out stock prices which have hit the barrier, and subsequently discards the payoff to price down-and-out Eurpoean Call options. 
 
+**Black_Scholes_Down_Out_Exit** - when a continuous time process is modelled against discretely monitored barrier, there is a chance that between observations (timesteps), the stock breaches the barrier and then returns. In real-life this would be a knock-out/in, but woudl remain unobserved. The Manella algorithm implements the theoretical exit probability by implementing a Brownian bridge process, thus reducing the bias and speeding up convergence of the Monte Carlo scheme . The theoretical exit probability of a Brownian Bridge process is calculated at each timestep, and compared with a uiformly distributed variable to simulate theoretical exits.
+
 **Black_Scholes_European_price** - gives the price of a European Call and Put option using vectorised Monte Carlo methods, and checks the result using the Analytical Black-Scholes prices. 
 
 **Heston_European_Option_price** - Uses the Heston stochastic volatility model in a Monte Carlo simulation in conjunction with a fully truncated Milstein discretization to accurately price European options. 
