@@ -13,15 +13,15 @@ function [S, V, Call, Put] = Heston_European_Option(k, theta, v0, p, sigma, T, s
 % E: exercise price
 t = 0:dt:T; % time axis
 N = length(t); % length of each simulated pathway
-%tic
+tic
 % function uses Milstein discretization on the CIR model to compute values
 % of v_t with Roger Lord, Remmert Koekkoek, and Dick JC Van Dijk. A comparison of
-biased simulation schemes for stochastic volatility models. (2008)'s full
-truncation scheme avoid complex prices
+% biased simulation schemes for stochastic volatility models. (2008)'s full
+% truncation scheme avoid complex prices
 % It deploys the Milstein scheme for s_t at each timestep
 
-%if 2 * k * theta > sigma^2 % if feller condition satisfied then carry out
-    % computation as required
+if 2 * k * theta > sigma^2 
+% if feller condition satisfied then carry out computation as required
     V = zeros(M,N);
     V(:,1) = v0;
     S = zeros(M,N);
@@ -52,8 +52,8 @@ truncation scheme avoid complex prices
     % to time t = 0 from t = T
     Call = exp(-r.*(T)).*mean(payoff_call);
     Put = exp(-r*(T)).*mean(payoff_put);
-%else 
-    %disp('Error: Feller Condition not satisfied')
-%end
-%toc
+else 
+    disp('Error: Feller Condition not satisfied')
+end
+toc
 end
