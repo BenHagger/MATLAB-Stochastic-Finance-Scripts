@@ -1,4 +1,4 @@
-function r_t = simulate_CIR(alpha, sigma, beta, r0, dt, t0, tend, M)
+function [t, r_t] = simulate_CIR(alpha, sigma, beta, r0, dt, t0, tend, M)
 % beta: Mean interest rate
 % r0: Initial position
 % dt: Timestep
