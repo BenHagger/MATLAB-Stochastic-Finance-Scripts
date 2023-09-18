@@ -25,10 +25,12 @@ function [call_loop, call_vector, call_series] = BinomialValuation_EuropeanCall(
 
     % Calculate option values at maturity using loop
     for k = 1:(num_steps+1)
+        % initialise the final payoffs of the options
         PriceOption(num_steps+1,k) = max(stockPrice*up_mag^(k-1)*down_mag^(num_steps-k+1) - strikePrice, 0); 
     end
-    for m = num_steps:-1:1
-        for k = 1:m 
+    for m = num_steps:-1:1  % loop through each point in time - represented by the columns
+        for k = 1:m % loop through each branch at a specific point in time - each of the potential movements of the stock from the previous value
+            % loop through 
             PriceOption(m,k) = discountFactor*(riskNeutralProb*PriceOption(m+1,k+1) + (1-riskNeutralProb)*PriceOption(m+1,k));
         end
     end
