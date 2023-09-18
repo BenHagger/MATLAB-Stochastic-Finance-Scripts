@@ -3,6 +3,8 @@
 ## Vanilla options pricing
 **Black_Scholes_European_price** - gives the price of a European Call and Put option using vectorised Monte Carlo methods, and checks the result using the Analytical Black-Scholes prices. 
 
+**BinomialValuation_EuropeanCall** - approximates the price of a European Call via time-reverse recursive Binomial for loops, and by the series approximation for the Binomial formula
+
 **Heston_European_Option_price** - Uses the Heston stochastic volatility model in a Monte Carlo simulation in conjunction with a fully truncated Milstein discretization to accurately price European options. 
 
 ## Barrier option pricing
